@@ -1,10 +1,12 @@
-\BOOKMARK [1][-]{section.1}{Setting: The Situation}{}% 1
+\BOOKMARK [1][-]{section.1}{Setting: the situation}{}% 1
 \BOOKMARK [1][-]{section.2}{The goal}{}% 2
 \BOOKMARK [1][-]{section.3}{The approach}{}% 3
 \BOOKMARK [2][-]{subsection.3.1}{Getting started}{section.3}% 4
-\BOOKMARK [2][-]{subsection.3.2}{Problem 1: Intractable pbold0mu mumu subsection\(x\)}{section.3}% 5
-\BOOKMARK [2][-]{subsection.3.3}{Idea for Solution to Problem 1: What about using DKL?}{section.3}% 6
-\BOOKMARK [2][-]{subsection.3.4}{Actual Solution to Problem 1: Use your ELBO}{section.3}% 7
+\BOOKMARK [2][-]{subsection.3.2}{Problem 1: intractable pbold0mu mumu subsection\(x\)}{section.3}% 5
+\BOOKMARK [2][-]{subsection.3.3}{Idea for solution to problem 1: What about using DKL?}{section.3}% 6
+\BOOKMARK [2][-]{subsection.3.4}{Actual solution to problem 1: use your ELBO}{section.3}% 7
 \BOOKMARK [2][-]{subsection.3.5}{While we are at it: Let us learn about pbold0mu mumu subsection\(x\), too! }{section.3}% 8
-\BOOKMARK [2][-]{subsection.3.6}{Keeping the concepts apart, clear and concise}{section.3}% 9
+\BOOKMARK [2][-]{subsection.3.6}{Clear terminology}{section.3}% 9
 \BOOKMARK [2][-]{subsection.3.7}{Putting it all together}{section.3}% 10
+\BOOKMARK [1][-]{appendix.A}{Derivation of the DKL expression in Equation 6}{}% 11
+\BOOKMARK [1][-]{appendix.B}{Derivation of the ELBO reformulation in Equation 11}{}% 12

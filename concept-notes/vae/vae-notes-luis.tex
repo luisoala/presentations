@@ -52,6 +52,8 @@
 %for under- and overbrace
 \usepackage{mathtools}
 
+%appendix management
+\usepackage[toc,page]{appendix}
 
 \begin{document}
 
@@ -69,7 +71,17 @@
 %------------------------------
 %	DOCUMENT
 %------------------------------
-\section{Setting: The Situation}
+\begin{center}
+	{\Large \bf Materials used}
+	\\
+	These notes are based on the following materials
+\end{center}
+\begin{itemize}
+	\item The original VAE paper by \citep{kingma_auto-encoding_2013}
+	\item A great VAE tutorial by \citep{altosaar_tutorial_2017}
+	\item A nice post by \citep{yang_understanding_2017} on the derivation of the ELBO
+\end{itemize}
+\section{Setting: the situation}
 
 \begin{figure}[h]
 	\begin{center}
@@ -90,9 +102,11 @@ Imagine a situation as depicted in \autoref{fig:situation}. Our situation includ
 \begin{itemize}
 	\item A size $N$ observed sample $\mathbf{X}$ of random variable $\mathbf{x}$. We \underline{assume} that $\bx$ follows the \textit{likelihood} $p_{\bT^*}(\bx|\bz)$.
 	\item A latent variable $\bz$ which we \underline{assume} to follow the \textit{prior} $p_{\bT^*}(\bz)$. It is called latent because we cannot see any of the $\bz$ values.
-	\item We \underline{assume} that $p_{\bT^*}(\bz)$ and $p_{\bT^*}(\bx|bz)$ belong to the parametric family of distributions $p_{\bT}(\bz)$ and $p_{\bT}(\bx|\bz)$.
+	\item We \underline{assume} that $p_{\bT^*}(\bz)$ and $p_{\bT^*}(\bx|\bz)$ belong to the parametric family of distributions $p_{\bT}(\bz)$ and $p_{\bT}(\bx|\bz)$.
 	\item We do not know anything about $\bT^*$ or $\bz$.
 \end{itemize}
+
+\pagebreak
 
 \begin{mdframed}
 	{\Large \bf Basic probability rules reference}
@@ -114,7 +128,7 @@ Imagine a situation as depicted in \autoref{fig:situation}. Our situation includ
 
 
 \section{The goal}
-We want to learn what sensible values for our unknown, latent variable $\bz$ would be given the information we have available. Bayes' formula gives us a straightforward way to do so. We are interested in the \textit{posterior} $\pT(\bz|\bx)$.
+We want to learn about what would be sensible values for our unknown, latent variable $\bz$ given the information we have available. Bayes' formula gives us a straightforward way to do so. We are interested in the \textit{posterior} $\pT(\bz|\bx)$.
 
 \section{The approach}
 \subsection{Getting started}
@@ -127,16 +141,16 @@ Remember that per our initial assumption we have access to $p_{\bT}(\bz)$ and $p
 \par
 So we can calculate, again \underline{in theory}, the \textit{posterior} $\pT(\bz|\bx)$ ...
 
-\subsection{Problem 1: Intractable  $\pT(\bx)$}
+\subsection{Problem 1: intractable  $\pT(\bx)$}
 ... but the integration over all possible values of $\bz$ in \autoref{eq:marg} is computationally not feasible (TODO: why actually not?). That means we cannot calculate $\pT(\bz|\bx)$ simply using Bayes after all.
 
-\subsection{Idea for Solution to Problem 1: What about using $D_{\text{KL}}$?}
-Okay, so we cannot simply calculate $\pT(\bz|\bx)$ with the information available at our disposal. What about this idea: We try to approximate $\pT(\bz|\bx)$ using a parametric distribution $\qPhi(\bz|\bx)$ by doing
+\subsection{Idea for solution to problem 1: What about using $D_{\text{KL}}$?}
+Okay, so we cannot simply calculate $\pT(\bz|\bx)$ with the information at our disposal. What about this idea: We try to approximate $\pT(\bz|\bx)$ using a parametric distribution $\qPhi(\bz|\bx)$ by doing
 \begin{equation}
 	\underset{\bphi}{\mathrm{argmin}} D_{\text{KL}}(\qPhi(\bz|\bx)||\pT(\bz|\bx))
 	\label{eq:min-dkl}
 \end{equation}
-The $\qPhi(\bz|\bx)$ with the problematic $\pT(\bx)$ is still part \autoref{eq:min-dkl}, but maybe with some wishful thinking and function magic the $D_{KL}$ is somehow getting rid of it? Let us see:
+The $\pT(\bz|\bx)$ with the problematic $\pT(\bx)$ is still part \autoref{eq:min-dkl}, but maybe with some wishful thinking and function magic the $D_{KL}$ is somehow getting rid of it? Let us see\footnote{See appendix \autoref{appendix:dkl-derivation} for the derivation of \autoref{eq:dkl-full1}}:
 \begin{equation}
 	D_{\text{KL}}(\qPhi(\bz|\bx)||\pT(\bz|\bx)) = \mathbb{E}_{\qPhi(\bz|\bx)}[\log \qPhi(\bz|\bx)] - \mathbb{E}_{\qPhi(\bz|\bx)}[\log \pT(\bx,\bz)] + \log\pT(\bx)
 	\label{eq:dkl-full1}
@@ -144,7 +158,7 @@ The $\qPhi(\bz|\bx)$ with the problematic $\pT(\bx)$ is still part \autoref{eq:m
 TODO: include the derivation for \autoref{eq:dkl-full1} from page 12 of your notes. This also covers the ELBO derivation part  \par
 Unfortunately, the answer is no. $\log\pT(\bx)$ is still part of the expression. No magic, we are back to square one.
 
-\subsection{Actual Solution to Problem 1: Use your ELBO}
+\subsection{Actual solution to problem 1: use your ELBO}
 But our efforts in the previous step, using the $D_{\text{KL}}$, were not in vain. Upon closer examination of \autoref{eq:dkl-full1} the first two terms turn out to be part of a familiar expression: the evidence lower bound (ELBO). Viewed as a function of $\bphi$ and $\bT$ the ELBO is defined as:
 \begin{equation}
 	\mathbf{ELBO}(\bphi, \bT) = \mathbb{E}_{\qPhi(\bz|\bx)}[\log \pT(\bx,\bz)] - \mathbb{E}_{\qPhi(\bz|\bx)}[\log \qPhi(\bz|\bx)]
@@ -164,20 +178,20 @@ In \autoref{eq:dkl-with-elbo} it also becomes apparant why the ELBO is called EL
 \log\pT(\bx) \geq \mathbf{ELBO}(\bphi, \bT)
 \label{eq:elbo-as-lower-bound2}
 \end{equation}
-Thus we can see that the ELBO indeed is a lower bound to the likelihood of the \textit{evidence}. We can also rewrite \autoref{eq:elbo} as: (TODO: include detailed derivation and clean point about this single datapoint vs. all decomposition of the objective)
+Thus we can see that the ELBO indeed is a lower bound to the likelihood of the \textit{evidence}. We can also rewrite \autoref{eq:elbo} as\footnote{See appendix \autoref{appendix:elbo-reform} for the derivation of \autoref{eq:elbo-final} from \autoref{eq:elbo}}:
 \begin{equation}
 	\mathbf{ELBO}(\bphi, \bT) = \mathbb{E}_{\qPhi(\bz|\bx)}[\log \pT(\bx|\bz)] - D_{\text{KL}}(\qPhi(\bz|\bx)|p_{\bT}(\bz))
 	\label{eq:elbo-final}
 \end{equation}
 \par 
-Let us take a step back and recap what we have seen so far. Our initial goal was to learn about plausible values for $\bz$, a latent variable that we cannot observe. Bayes' Theorem gives us a straightforward way to reason about about $\bz$ by using the information we have on $p_{\bT}(\bz)$ and $p_{\bT}(\bx|\bz)$. Unfortunately we run into problems approximating the \textit{posterior} $\pT(\bz|\bx)$ because the computation of the \textit{evidence} $\pT(\bx)$ is intractable. We thought about using a parametric model $\qPhi((\bz|\bx))$ to minimize the $D_{\text{KL}}$ to the \textit{posterior} $\pT(\bz|\bx)$, but saw that the intractable $\pT(\bx)$ is still in the expression. So far so good. 
+Let us take a step back and recap what we have seen so far. Our initial goal was to learn about plausible values for $\bz$, a latent variable that we cannot observe. Bayes' Theorem gives us a straightforward way to reason about about $\bz$ by using the information we have on $p_{\bT}(\bz)$ and $p_{\bT}(\bx|\bz)$. Unfortunately we run into problems approximating the \textit{posterior} $\pT(\bz|\bx)$ because the computation of the \textit{evidence} $\pT(\bx)$ is intractable. We thought about using a parametric model $\qPhi(\bz|\bx)$ to minimize the $D_{\text{KL}}$ to the \textit{posterior} $\pT(\bz|\bx)$, but saw that the intractable $\pT(\bx)$ is still in the expression. So far so good. 
 \par 
 Our initial motivation for using the $D_\text{KL}$ was to have an objective that we can minimize to learn about the \textit{posterior} $\pT(\bz|\bx)$. If we now stare at \autoref{eq:dkl-with-elbo} for a while we can realize the following. At the optimal $\bphi^*$ we have that $	D_{\text{KL}}(q_{\bphi^*}(\bz|\bx)||\pT(\bz|\bx)) = 0$. Additionally we know that $\log\pT(\bx) \geq \mathbf{ELBO}(\bphi, \bT)$ from \autoref{eq:elbo-as-lower-bound2}. Since only the ELBO is a function of $\bphi$ (see RHS of \autoref{eq:dkl-with-elbo}) our objective of minimizing the $D_{\text{KL}}$ (LHS of \autoref{eq:dkl-with-elbo}) is equivalent to maximizing the ELBO w.r.t. $\bphi$. And this is what we will do for \textit{variational inference}. Finally we have a tractable approach to approximate the \textit{posterior} $\pT(\bz|\bx)$ and learn about plausible values for $\bz$ given our available data $\bx$: we maximize the ELBO!
 
 \subsection{While we are at it: Let us learn about $\pT(\bx)$, too! }
-We learned that \textit{evidence}  $\pT(\bx)$ is major culprit for all our problems. It is the reason why we have to take the tiresome detour via the ELBO to find a tractable optimization problem that satisfies our goal of learning about $\bz$. Along the way we learned that ELBO is called ELBO because it is a lower bound to the likelihood of the \textit{evidence}. We said previously that we will maximize the ELBO w.r.t. the variational parameters $\bphi$ because this is equivalent to minimizing the $D_{\text{KL}}$. But as we know from \autoref{eq:elbo-as-lower-bound2} (and from its name) the ELBO lower bounds the likelihood of the \textit{evidence}  $\pT(\bx)$. Thus if we want to learn and model the data $\bx$ as well we can do so by maximizing the ELBO w.r.t. $\bT$, too! And this is what happens in Variational Auto-Encoders: next to the \textit{variational inference} on the parameters $\bphi$ underlying variable $\bz$ we also perform \textit{variational expectation maximization} on the parameters $\bT$ underlying variable $\bx$.
+We learned that \textit{evidence}  $\pT(\bx)$ is major culprit for all our problems. It is the reason why we have to take the tiresome detour via the ELBO to find a tractable optimization problem that satisfies our goal of learning about $\bz$. Along the way we learned that ELBO is called ELBO because it is a lower bound to the likelihood of the \textit{evidence}. We said previously that we will maximize the ELBO w.r.t. the variational parameters $\bphi$ because this is equivalent to minimizing the $D_{\text{KL}}$. But as we know from \autoref{eq:elbo-as-lower-bound2} (and from its name) the ELBO lower bounds the likelihood of the \textit{evidence}  $\pT(\bx)$. Thus if we wish to learn and model the data $\bx$ as well we can do so by maximizing the ELBO w.r.t. $\bT$, too! And this is what happens in Variational Auto-Encoders: next to the \textit{variational inference} on the parameters $\bphi$ underlying variable $\bz$ we also perform \textit{variational expectation maximization} on the parameters $\bT$ underlying variable $\bx$.
 
-\subsection{Keeping the concepts apart, clear and concise}
+\subsection{Clear terminology}
 Just to reiterate and manifest the terminology (to me at least this is very important to keep the concepts ordered in my head).
 
 \begin{itemize}
@@ -196,7 +210,7 @@ Just to reiterate and manifest the terminology (to me at least this is very impo
 \subsection{Putting it all together}
 So we learned that in Variational Auto-Encoders we do not just perform \textit{variational inference} on the parameters of the latent variable but also learn a generative model of the observable data at the same time. Let us put all these parts together into a graphical representation for better overview:
 
-\begin{figure}[t]
+\begin{figure}[h]
 	\includegraphics[width=\linewidth]{figures/vae-graph.png}
 	\label{fig:vae-graph}
 \end{figure}
@@ -210,8 +224,62 @@ Finally, a few short notes on how we can, in practice, evaluate the individual t
 	\item $D_{\text{KL}}(\qPhi(\bz|\bx)|p_{\bT}(\bz))$
 	\begin{itemize}
 		\item Sampling based (sample several $\bz$ for a particular $\bx^{(i)}$ and take empirical agerage)
-		\item Analytically (e.g. this is possible if $\qPhi$ and $\pT$ are both Gaussian\footnote{See the appendix for such an example})
+		\item Analytically (e.g. this is possible if $\qPhi$ and $\pT$ are both Gaussian\footnote{See appendix B of the original VAE paper by \citep{kingma_auto-encoding_2013}. They have a short, concise example for two Gaussians.})
 	\end{itemize}
 \end{itemize}
-For practical recommendations regarding the sampling procedure please check the original paper by \citep{kingma_auto-encoding_2013}. They have a number of tips.
+For practical recommendations regarding the sampling procedure please check the original paper by \citep{kingma_auto-encoding_2013}. They have a number of tips. Also note that since we need to differentiate through the random variable $\bz$ for learning a trick (the \textit{reparametrization trick}) is needed. This trick is explained in the original paper and also in the tutorial by \citep{altosaar_tutorial_2017}.
+
+\printbibliography
+
+\appendix
+	\section{Derivation of the $D_{\text{KL}}$ expression in \autoref{eq:dkl-full1}}
+	\label{appendix:dkl-derivation}
+	\begin{equation}
+		D_{\text{KL}}(\qPhi(\bz|\bx)||\pT(\bz|\bx))
+	\end{equation}
+	
+	\begin{equation}
+		= \int_{\bz|\bx} \qPhi(\bz|\bx) \log \frac{\qPhi(\bz|\bx)}{\pT(\bz|\bx)}
+	\end{equation}
+	
+	\begin{equation}
+		= - \int_{\bz|\bx} \qPhi(\bz|\bx) \log \frac{\pT(\bz|\bx)}{\qPhi(\bz|\bx)}
+	\end{equation}
+	
+	\begin{equation}
+	= - \int_{\bz|\bx} \qPhi(\bz|\bx) \log \pT(\bz|\bx) + \int_{\bz|\bx} \qPhi(\bz|\bx) \log \qPhi(\bz|\bx)
+	\end{equation}
+	
+	\begin{equation}
+	= - \int_{\bz|\bx} \qPhi(\bz|\bx) \log \pT(\bx, \bz) + \log \pT(\bx)\int_{\bz|\bx} \qPhi(\bz|\bx) + \int_{\bz|\bx} \qPhi(\bz|\bx) \log \qPhi(\bz|\bx)
+	\end{equation}
+	
+	\begin{equation}
+	= \mathbb{E}_{\qPhi(\bz|\bx)}[\log \qPhi(\bz|\bx)] - \mathbb{E}_{\qPhi(\bz|\bx)}[\log \pT(\bx,\bz)] + \log\pT(\bx)
+	\end{equation}
+	
+	\section{Derivation of the ELBO reformulation in \autoref{eq:elbo-final}}
+	\label{appendix:elbo-reform}
+	
+	\begin{equation}
+		\mathbb{E}_{\qPhi(\bz|\bx)}[\log \pT(\bx,\bz)] - \mathbb{E}_{\qPhi(\bz|\bx)}[\log \qPhi(\bz|\bx)]
+	\end{equation}
+	
+	\begin{equation}
+		= \mathbb{E}_{\qPhi(\bz|\bx)}[\log \pT(\bx|\bz)] + \mathbb{E}_{\qPhi(\bz|\bx)}[\log \pT(\bz)] - \mathbb{E}_{\qPhi(\bz|\bx)}[\log \qPhi(\bz|\bx)]
+	\end{equation}
+	
+	\begin{equation}
+	= \mathbb{E}_{\qPhi(\bz|\bx)}[\log \pT(\bx|\bz)] + (-1) \mathbb{E}_{\qPhi(\bz|\bx)}[\log \qPhi(\bz|\bx) - \log \pT(\bz)]
+	\end{equation}
+	
+	\begin{equation}
+	= \mathbb{E}_{\qPhi(\bz|\bx)}[\log \pT(\bx|\bz)] + (-1) \int_{\bz|\bx} \qPhi(\bz|\bx)\log \frac{\qPhi(\bz|\bx)}{\pT(\bz)}
+	\end{equation}
+	
+	\begin{equation}
+	= \mathbb{E}_{\qPhi(\bz|\bx)}[\log \pT(\bx|\bz)] - D_{\text{KL}}(\qPhi(\bz|\bx)||\pT(\bz))
+	\end{equation}
+
+
 \end{document}

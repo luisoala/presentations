@@ -17,6 +17,41 @@
 \endgroup
 
 \datalist[entry]{nyt/global//global/global}
+  \entry{altosaar_tutorial_2017}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=AJ}{%
+         family={Altosaar},
+         familyi={A\bibinitperiod},
+         given={Jaan},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{AJ1}
+    \strng{fullhash}{AJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2017}
+    \field{labeldatesource}{year}
+    \field{sortinit}{A}
+    \field{sortinithash}{A}
+    \field{abstract}{%
+    Understanding Variational Autoencoders (VAEs) from two perspectives: deep
+  learning and graphical models.%
+    }
+    \field{title}{Tutorial - {What} is a variational autoencoder?}
+    \verb{url}
+    \verb /what-is-variational-autoencoder-vae-tutorial/
+    \endverb
+    \verb{file}
+    \verb Snapshot:/home/donald/.zotero/zotero/l50no6tt.default/zotero/storage/
+    \verb ACTAKSPH/what-is-variational-autoencoder-vae-tutorial.html:text/html
+    \endverb
+    \field{year}{2017}
+    \field{urlday}{05}
+    \field{urlmonth}{10}
+    \field{urlyear}{2018}
+  \endentry
+
   \entry{kingma_auto-encoding_2013}{article}{}
     \name{author}{2}{}{%
       {{hash=KDP}{%
@@ -47,6 +82,41 @@
     \endverb
     \field{journaltitle}{arXiv preprint arXiv:1312.6114}
     \field{year}{2013}
+  \endentry
+
+  \entry{yang_understanding_2017}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=YX}{%
+         family={Yang},
+         familyi={Y\bibinitperiod},
+         given={Xitong},
+         giveni={X\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{YX1}
+    \strng{fullhash}{YX1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2017}
+    \field{labeldatesource}{year}
+    \field{sortinit}{Y}
+    \field{sortinithash}{Y}
+    \field{abstract}{%
+    Lala%
+    }
+    \field{title}{Understanding the {Variational} {Lower} {Bound}}
+    \verb{url}
+    \verb https://xyang35.github.io/2017/04/14/variational-lower-bound/
+    \endverb
+    \verb{file}
+    \verb Understanding the Variational Lower Bound:/home/donald/.zotero/zotero
+    \verb /l50no6tt.default/zotero/storage/GADISRVZ/variational-lower-bound.htm
+    \verb l:text/html
+    \endverb
+    \field{year}{2017}
+    \field{urlday}{05}
+    \field{urlmonth}{10}
+    \field{urlyear}{2018}
   \endentry
 \enddatalist
 \endinput
