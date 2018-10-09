@@ -1,0 +1,52 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.9 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\datalist[entry]{nyt/global//global/global}
+  \entry{kingma_auto-encoding_2013}{article}{}
+    \name{author}{2}{}{%
+      {{hash=KDP}{%
+         family={Kingma},
+         familyi={K\bibinitperiod},
+         given={Diederik\bibnamedelima P.},
+         giveni={D\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+      {{hash=WM}{%
+         family={Welling},
+         familyi={W\bibinitperiod},
+         given={Max},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{KDPWM1}
+    \strng{fullhash}{KDPWM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelyear}{2013}
+    \field{labeldatesource}{year}
+    \field{sortinit}{K}
+    \field{sortinithash}{K}
+    \field{title}{Auto-encoding variational bayes}
+    \verb{file}
+    \verb 1312.6114.pdf:/home/donald/.zotero/zotero/l50no6tt.default/zotero/sto
+    \verb rage/M3BX2XAQ/1312.6114.pdf:application/pdf
+    \endverb
+    \field{journaltitle}{arXiv preprint arXiv:1312.6114}
+    \field{year}{2013}
+  \endentry
+\enddatalist
+\endinput
