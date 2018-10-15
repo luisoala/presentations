@@ -1,0 +1,25 @@
+\begin{thebibliography}{}
+
+\bibitem[Dehghani et~al., 2018]{dehghani_universal_2018}
+Dehghani, M., Gouws, S., Vinyals, O., Uszkoreit, J., and Kaiser, L. (2018).
+\newblock Universal {Transformers}.
+\newblock {\em arXiv preprint arXiv:1807.03819}.
+
+\bibitem[See et~al., 2017]{see_get_2017}
+See, A., Liu, P.~J., and Manning, C.~D. (2017).
+\newblock Get {To} {The} {Point}: {Summarization} with {Pointer}-{Generator}
+  {Networks}.
+\newblock In {\em Proceedings of the 55th {Annual} {Meeting} of the
+  {Association} for {Computational} {Linguistics} ({Volume} 1: {Long}
+  {Papers})}, pages 1073--1083, Vancouver, Canada. Association for
+  Computational Linguistics.
+
+\bibitem[Vaswani et~al., 2017]{vaswani_attention_2017}
+Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A.~N.,
+  Kaiser, {\textbackslash}., and Polosukhin, I. (2017).
+\newblock Attention is all you need.
+\newblock In {\em Advances in {Neural} {Information} {Processing} {Systems}},
+  pages 5998--6008.
+\newblock read.
+
+\end{thebibliography}
