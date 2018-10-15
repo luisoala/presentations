@@ -122,7 +122,7 @@ Finally, in step (c) the attention scores are used to produce the \textit{contex
 	\mathbf{h}^{\text{d}^*}_i = \mathbf{H}\mathbf{a}_i
 	\label{eq:context}
 \end{equation}
-Now we have worked through a concrete example for an attention function $attention(\mathbf{h}^{\text{d}}_i, \mathbf{H}^{\text{e}} \text{or } \mathbf{H}^{\text{d}}, \mathbf{\theta})$. Note that there many variants to design the attention function. Most variants only differ in the way $\mathbf{e}_i$ is calculated in \autoref{eq:scores}. The basic steps remain the same. 
+Now we have worked through a concrete example for an attention function $attention(\mathbf{h}^{\text{d}}_i, \mathbf{H}^{\text{e}} \text{or } \mathbf{H}^{\text{d}}, \mathbf{\theta})$. Note that there many variants to design the attention function\footnote{See the slides of lecture 11 of Richard Socher's Stanford course \textit{cs224n} for an overview of different variants \url{http://web.stanford.edu/class/cs224n/lectures/lecture11.pdf}}. Most variants only differ in the way $\mathbf{e}_i$ is calculated in \autoref{eq:scores}. The basic steps remain the same. 
 \par 
 After we have obtained the \textit{context vector} $\mathbf{h}^{\text{d}^*}_i$ it is then usually concatenated to the regular decoder output state $\mathbf{h}^{\text{d}}_i$. This concatenated vector is then typically passed as input to the output layer of the decoder which in sequence modelling tasks usually produces a distribution over words.
 \par
@@ -131,7 +131,9 @@ Finally a short comment on the terminology regarding attention that is used in t
 	\item \textit{Intra-temporal attention}: This attention mechanism uses $\mathbf{H}^{\text{e}}$, i.e. the encoder LSTM hidden states, as input.
 	\item \textit{Intra-decoder attention} or more generally \textit{self-attention}: In this scenario the attention function takes as input $\mathbf{H}^{\text{d}}$ which is a matrix of the LSTM hidden states of the \textit{decoder} up to the current decoder position at which we calculate the attention.
 \end{itemize}
-Now we have recapped the attention mech
+Now that we have recapped the mechanics of the attention module as used in vanilla sequence-to-sequence models let us proceed to an understanding how attention is used in the Transformer model by \cite{vaswani_attention_2017}.
+
+\section{Attention as the Transformer uses it}
 
 
 %\printbibliography
