@@ -149,28 +149,152 @@ ML Group @ Fraunhofer HHI \\ % Your institution for the title page
 \section{Attention as we (or I) know it} % Sections can be created in order to organize your presentation into discrete blocks, all sections and subsections are automatically printed in the table of contents as an overview of the talk
 %------------------------------------------------
 
-\subsection{Subsection Example} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
+\begin{frame}
+\begin{figure}[t]
+	\includegraphics[width=\textwidth]{figures/vanilla-attention-big.png}
+	\caption{Vanilla seq2seq LSTM with attention mechanism.}
+\end{figure}
+\end{frame}
 
-%------------------------------------------------
+\begin{frame}{Attention as we (or I) know it}
+	$attention(\mathbf{h}^{\text{d}}_i, \mathbf{H}^{\text{e}} \text{or } \mathbf{H}^{\text{d}}, \mathbf{\theta})$ steps:
+	\begin{itemize}
+		\item[(a)] Calculate \textit{attention scores} $\mathbf{e}_i$, e.g. as $\mathbf{e}_i = \mathbf{v}^T\tanh(\mathbf{W}_1\mathbf{H} + \mathbf{W}_2 \mathbf{h}^{\text{d}}_i + \mathbf{b}_{\text{attn}})$,
+		\item[(b)] normalize the \textit{attention scores} to an \textit{attention distribution} $\mathbf{a}_i = \text{softmax}(\mathbf{e}_i)$ via softmax
+		\item[(c)] and finally combine the attention values, $\mathbf{H}$, into an attention weighted representation $\mathbf{h}^{\text{d}^*}_i = \mathbf{H}\mathbf{a}_i$.
+		\item[(c)] Then do what you please with $\mathbf{h}^{\text{d}^*}_i$, often we see $concatenate(\mathbf{h}^{\text{d}}_i, \mathbf{h}^{\text{d}^*}_i)$ before going to the output FC layer.
+	\end{itemize}
+\end{frame}
 
-\begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
-\frametitle{Citation}
-An example of the \verb|\cite| command to cite within the presentation:\\~
+\section{Terminology}
 
-This statement requires citation \cite{p1}.
+\begin{frame}{Terminology}
+\begin{itemize}
+\item Intra-temporal (regular) attention
+\begin{itemize}
+	\item $attention(\mathbf{h}^{\text{d}}_i, \mathbf{H}^{\text{e}}, \mathbf{\theta})$
+\end{itemize}
+\ \\
+\item Intra-decoder attention/self-attention
+\begin{itemize}
+	\item $attention(\mathbf{h}^{\text{d}}_i, \mathbf{H}^{\text{d}}, \mathbf{\theta})$
+\end{itemize}
+\end{itemize}
+
+\begin{itemize}
+	\item $\mathbf{h}^{\text{d}}_i$: query $\mathbf{q}$
+	\item $\mathbf{H}^{\text{e}}$: keys $\mathbf{K}$
+	\item $\mathbf{H}^{\text{e}}$: values $\mathbf{V}$
+\end{itemize}
+\end{frame}
+
+\section{Transformer}
+
+\subsection{Basic mechanics}
+\begin{frame}{Transformer - Basic mechanics}
+	\begin{figure}[t]
+		\includegraphics[width=0.5\textwidth]{figures/vaswani-trans-clean.png}
+		\caption{Transformer illustration, graph taken from \cite{vaswani_attention_2017}}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Transformer - Basic mechanics}
+\begin{figure}[t]
+	\includegraphics[width=0.5\textwidth]{figures/vaswani-trans.png}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Transformer - Basic mechanics}
+\begin{figure}[t]
+	\includegraphics[width=0.3\textwidth]{figures/multi-head-attn.png}
+\end{figure}
+Scaled dot-product attention: $\text{softmax}(\frac{\mathbf{Q}\mathbf{K}^T}{\sqrt{d_k}})\mathbf{V}$
+\\
+With $\mathbf{Q}$.shape = [seq-positions, $d_k$], $\mathbf{K}$.shape = [seq-positions, $d_k$] and $\mathbf{V}$.shape = [seq-positions, $d_v$]
+\end{frame}
+
+\begin{frame}{Transformer - Basic mechanics}
+	Tracing the dimensions - step by step
+	\begin{itemize}
+		\item $\mathbf{Q}\mathbf{K}^T$.shape = [seq-positions, seq-positions], interpretation: one row represents dots of one query with all keys like the attention scores $\mathbf{e}_i$ from before
+		\item $\text{softmax}(\frac{\mathbf{Q}\mathbf{K}^T}{\sqrt{d_k}})$.shape = [seq-positions, seq-positions], interpretation: one row represents attention distribution $\mathbf{a}_i$ from before
+		\item $\text{softmax}(\frac{\mathbf{Q}\mathbf{K}^T}{\sqrt{d_k}})\mathbf{V}$.shape = [seq-positions, $d_v$], interpretation: one row represents attention weighted interpolation of all values w.r.t one query
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Transformer - Bells and whistles}
+	\begin{itemize}
+		\item Positional encoding as $PE_{(pos,2i)} = sin(pos / 10000^{2i/d_{model}})$
+		\item Residual connections
+		\item Layer normalization
+	\end{itemize}
+\end{frame}
+
+\subsection{Results}
+
+\begin{frame}{Transformer - Results}
+\begin{figure}[t]
+	\includegraphics[width=\textwidth]{figures/trans-results.png}
+\end{figure}
+\end{frame}
+
+\section{Universal Transformer - changes and results}
+\begin{frame}{Universal Transformer - Additions}
+Motivation
+	\begin{itemize}
+		\item Empirical: Improve generalization
+		\item Theoretical: Expanding computational expressivity
+	\end{itemize}
+	\begin{figure}[t]
+		\includegraphics[width=\textwidth]{figures/universal-trans.png}
+		\caption{Illustration of Universal Transformer, graph taken from \cite{dehghani_universal_2018}}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Universal Transformer - Results}
+\begin{figure}[t]
+	\includegraphics[width=\textwidth]{figures/uni-results.png}
+\end{figure}
+\end{frame}
+
+\section{BERT - changes and results}
+\begin{frame}{BERT - Usage}
+\begin{itemize}
+	\item Only use encoder part of transformer to pretrain a LM
+	\item Pretraining on masked inputs and next sentence prediction
+	\item Use encoder outputs as input for downstream task, fine-tune all parameters
+\end{itemize}
+\begin{figure}[t]
+	\includegraphics[width=0.5\textwidth]{figures/bert.png}
+	\caption{Illustration of BERT for sequence classification task, graph taken from \cite{devlin_bert:_2018}}
+\end{figure}
+\end{frame}
+
+\begin{frame}{BERT - Results}
+Let us check the paper, too much stuff
+\end{frame}
+
+\section{Observations and questions}
+\begin{frame}{Observations and questions}
+\begin{itemize}
+	\item Path length reduction vis-a-vis LSTM
+	\item Computational elegance and impressive performance
+	\ \\
+	\ \\
+	\item What is the point of positional encoding?
+	\item Other ways to decode? (e.g. like in the Universal Transformer)
+	\item BERT hyperparameters: how to validate the masking scheme?
+\end{itemize}
 \end{frame}
 
 %------------------------------------------------
 
-\begin{frame}
-\frametitle{References}
-\footnotesize{
-\begin{thebibliography}{99} % Beamer does not support BibTeX so references must be inserted manually as below
-\bibitem[Smith, 2012]{p1} John Smith (2012)
-\newblock Title of the publication
-\newblock \emph{Journal Name} 12(3), 45 -- 678.
-\end{thebibliography}
-}
+%------------------------------------------------
+
+\section{Bibliography}
+\begin{frame}[allowframebreaks]{Bibliography}
+\bibliographystyle{abbrv}
+\bibliography{lib}
 \end{frame}
 
 %------------------------------------------------

@@ -1,0 +1,22 @@
+\begin{thebibliography}{1}
+
+\bibitem{dehghani_universal_2018}
+M.~Dehghani, S.~Gouws, O.~Vinyals, J.~Uszkoreit, and L.~Kaiser.
+\newblock Universal {Transformers}.
+\newblock {\em arXiv preprint arXiv:1807.03819}, 2018.
+
+\bibitem{devlin_bert:_2018}
+J.~Devlin, M.-W. Chang, K.~Lee, and K.~Toutanova.
+\newblock {BERT}: {Pre}-training of {Deep} {Bidirectional} {Transformers} for
+  {Language} {Understanding}.
+\newblock {\em arXiv preprint arXiv:1810.04805}, 2018.
+
+\bibitem{vaswani_attention_2017}
+A.~Vaswani, N.~Shazeer, N.~Parmar, J.~Uszkoreit, L.~Jones, A.~N. Gomez,
+  {\textbackslash}.~Kaiser, and I.~Polosukhin.
+\newblock Attention is all you need.
+\newblock In {\em Advances in {Neural} {Information} {Processing} {Systems}},
+  pages 5998--6008, 2017.
+\newblock read.
+
+\end{thebibliography}

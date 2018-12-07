@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.8.31)  4 OCT 2018 17:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.12)  6 NOV 2018 10:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -827,7 +827,7 @@ Dictionary: translator-numbers-dictionary, Language: English
 ry-English.dict
 Dictionary: translator-theorem-dictionary, Language: English 
 ) (./transformers.nav)
-<figures/transformer_title.png, id=25, 626.8218pt x 411.4572pt>
+<figures/transformer_title.png, id=49, 626.8218pt x 411.4572pt>
 File: figures/transformer_title.png Graphic file (type png)
 <use figures/transformer_title.png>
 Package pdftex.def Info: figures/transformer_title.png  used on input line 134.
@@ -839,14 +839,22 @@ Package pdftex.def Info: figures/transformer_title.png  used on input line 134.
 e.png>] (./transformers.toc) [2
 
 ]
+<figures/vanilla-attention-big.png, id=124, 509.9853pt x 346.6551pt>
+File: figures/vanilla-attention-big.png Graphic file (type png)
+<use figures/vanilla-attention-big.png>
+Package pdftex.def Info: figures/vanilla-attention-big.png  used on input line 
+157.
+(pdftex.def)             Requested size: 307.28987pt x 208.878pt.
+
 [3
 
-]
-LaTeX Font Info:    Try loading font information for U+msa on input line 172.
- (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+ <./figures/vanilla-attention-big.png>]
+LaTeX Font Info:    Try loading font information for U+msa on input line 167.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 172.
+LaTeX Font Info:    Try loading font information for U+msb on input line 167.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -854,30 +862,93 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 ] [5
 
-] [6
-
-] [7
-
 ]
+<figures/vaswani-trans-clean.png, id=205, 452.69125pt x 627.34375pt>
+File: figures/vaswani-trans-clean.png Graphic file (type png)
+<use figures/vaswani-trans-clean.png>
+Package pdftex.def Info: figures/vaswani-trans-clean.png  used on input line 19
+9.
+(pdftex.def)             Requested size: 153.64493pt x 212.92072pt.
+
+Overfull \vbox (9.7476pt too high) detected at line 199
+ []
+
+[6
+
+ <./figures/vaswani-trans-clean.png>]
+<figures/vaswani-trans.png, id=235, 452.69125pt x 627.34375pt>
+File: figures/vaswani-trans.png Graphic file (type png)
+<use figures/vaswani-trans.png>
+Package pdftex.def Info: figures/vaswani-trans.png  used on input line 205.
+(pdftex.def)             Requested size: 153.64493pt x 212.92072pt.
+ [7
+
+ <./figures/vaswani-trans.png>]
+<figures/multi-head-attn.png, id=264, 339.2675pt x 371.3875pt>
+File: figures/multi-head-attn.png Graphic file (type png)
+<use figures/multi-head-attn.png>
+Package pdftex.def Info: figures/multi-head-attn.png  used on input line 214.
+(pdftex.def)             Requested size: 92.1879pt x 100.91064pt.
+
 [8
 
-]
-\openout4 = `transformers.vrb'.
-
- (./transformers.vrb) [9
+ <./figures/multi-head-attn.png>] [9
 
 ] [10
 
 ]
-\openout4 = `transformers.vrb'.
+<figures/trans-results.png, id=341, 776.9025pt x 358.33875pt>
+File: figures/trans-results.png Graphic file (type png)
+<use figures/trans-results.png>
+Package pdftex.def Info: figures/trans-results.png  used on input line 239.
+(pdftex.def)             Requested size: 307.28987pt x 141.73636pt.
+ [11
 
- (./transformers.vrb) [11
+ <./figures/trans-results.png>]
+<figures/universal-trans.png, id=367, 651.43375pt x 332.24126pt>
+File: figures/universal-trans.png Graphic file (type png)
+<use figures/universal-trans.png>
+Package pdftex.def Info: figures/universal-trans.png  used on input line 252.
+(pdftex.def)             Requested size: 307.28987pt x 156.72626pt.
+[12
 
-] [12
+ <./figures/universal-trans.png>]
+<figures/uni-results.png, id=397, 933.4875pt x 246.9225pt>
+File: figures/uni-results.png Graphic file (type png)
+<use figures/uni-results.png>
+Package pdftex.def Info: figures/uni-results.png  used on input line 258.
+(pdftex.def)             Requested size: 307.28987pt x 81.2812pt.
+ [13
 
- </usr/share/texlive/texmf-dist/tex/latex/beamer/beamericonarticle.pdf>] [13
+ <./figures/uni-results.png>]
+<figures/bert.png, id=424, 402.50375pt x 357.335pt>
+File: figures/bert.png Graphic file (type png)
+<use figures/bert.png>
+Package pdftex.def Info: figures/bert.png  used on input line 271.
+(pdftex.def)             Requested size: 153.64493pt x 136.39938pt.
 
-]
+Overfull \vbox (5.15546pt too high) detected at line 271
+ []
+
+[14
+
+ <./figures/bert.png>] [15
+
+] [16
+
+] (./transformers.bbl
+LaTeX Font Info:    Try loading font information for OMS+cmss on input line 16.
+
+LaTeX Font Info:    No file OMScmss.fd. on input line 16.
+
+
+LaTeX Font Warning: Font shape `OMS/cmss/m/n' undefined
+(Font)              using `OMS/cmsy/m/n' instead
+(Font)              for symbol `textbackslash' on input line 16.
+
+) [17
+
+ </usr/share/texlive/texmf-dist/tex/latex/beamer/beamericonarticle.pdf>]
 \tf@nav=\write6
 \openout6 = `transformers.nav'.
 
@@ -887,37 +958,43 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \tf@snm=\write8
 \openout8 = `transformers.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 295.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 295.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 305.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 305.
 
 (./transformers.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 295.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 295.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 305.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 305.
 Package rerunfilecheck Info: File `transformers.out' has not changed.
-(rerunfilecheck)             Checksum: 35AECF39B919BBE479A31DA13C8C9122;183.
+(rerunfilecheck)             Checksum: 19C7A3A4B7502B2E2B6D853BEDF8F401;527.
+
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
  ) 
 Here is how much of TeX's memory you used:
- 16935 strings out of 494923
- 321296 string characters out of 6180742
- 384237 words of memory out of 5000000
- 19843 multiletter control sequences out of 15000+600000
- 12301 words of font info for 45 fonts, out of 8000000 for 9000
+ 17034 strings out of 494923
+ 323387 string characters out of 6180741
+ 384321 words of memory out of 5000000
+ 19920 multiletter control sequences out of 15000+600000
+ 15684 words of font info for 58 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  48i,14n,51p,779b,551s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss17.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/share/texlive/texmf-dist
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmssi10.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmssi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/symbols/msam10.pfb>
-Output written on transformers.pdf (13 pages, 2193252 bytes).
+pe1/public/amsfonts/cm/cmssi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbol
+s/msam10.pfb>
+Output written on transformers.pdf (17 pages, 2607231 bytes).
 PDF statistics:
- 423 PDF objects out of 1000 (max. 8388607)
- 383 compressed objects within 4 object streams
- 31 named destinations out of 1000 (max. 500000)
- 72 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 588 PDF objects out of 1000 (max. 8388607)
+ 523 compressed objects within 6 object streams
+ 47 named destinations out of 1000 (max. 500000)
+ 160 words of extra memory for PDF output out of 10000 (max. 10000000)
 
